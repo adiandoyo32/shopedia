@@ -59,8 +59,8 @@ function PublicRoute(props: PublicRouteProps) {
 function App() {
   return (
     <div className="App">
-      <Router>
-        <div className="body">
+      <Router basename="/">
+        <div className="body p-6">
           <Routes>
             {/* {routes.map((route, index) => <PublicRoute key={index} route={route}/>)} */}
             {routes.map((route, index) => <Route key={index} path={route.path} element={route.component} />)}
