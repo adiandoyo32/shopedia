@@ -33,14 +33,13 @@ export default function HomePage() {
     }, []);
 
     const renderProductList = () => {
-        if (isLoading) {
-            return <ProductListSkeleton />
-        } else {
-            return <div>
-                <ProductList productList={products} />
-                <div className="h-20"></div>
-            </div>
-        }
+        if (isLoading) return <ProductListSkeleton />
+
+        return <div>
+            <ProductList productList={products} />
+            <div className="h-20"></div>
+        </div>
+
     }
 
     return (
