@@ -26,7 +26,7 @@ const routes: Array<RouteItem> = [
     component: <HomePage />
   },
   {
-    path: "/about",
+    path: "/cart",
     component: <AboutPage />
   },
   {
@@ -77,30 +77,34 @@ function App() {
     // </div>
 
     <div className="App bg-neutral-200">
-      <div className="root max-w-2xl relative m-auto">
-        <section className="navbar sticky top-0 w-full z-50 bg-white px-4 py-2 flex flex-row items-center justify-between">
-          <div className="logo font-bold text-xl">
-            <span className="tracking-wider">Shopedia</span>
-          </div>
-          <div className="flex items-center cursor-pointer">
-            <IoLocationSharp size={24} className="text-red-500" />
-            <div className="ml-2 px-1 w-28 ">
-              <p className="text-xs text-gray-400 truncate">Lokasi</p>
-              <p className="text-sm font-bold truncate">Pontianak Kota - Pontianak</p>
+      <Router>
+        <div className="root max-w-2xl relative m-auto">
+          <section className="navbar sticky top-0 w-full z-50 bg-white px-4 py-2 flex flex-row items-center justify-between">
+            <div className="logo font-bold text-xl">
+              <span className="tracking-wider">Shopedia</span>
             </div>
-          </div>
-        </section>
+            <div className="flex items-center cursor-pointer">
+              <IoLocationSharp size={24} className="text-red-500" />
+              <div className="ml-2 px-1 w-28 ">
+                <p className="text-xs text-gray-400 truncate">Lokasi</p>
+                <p className="text-sm font-bold truncate">Pontianak Kota - Pontianak</p>
+              </div>
+            </div>
+          </section>
 
-        <section className="footer fixed bottom-0 w-full max-w-2xl z-50 bg-blue-300">
-          Footer
-        </section>
+          <section className="footer fixed bottom-0 w-full max-w-2xl z-50 bg-white">
+            <div className="bottom-navigation">
+              <BottomNavigation />
+            </div>
+          </section>
 
-        <section className="content bg-white">
-          <Carousel/>
-          <ProductCategory />
-          <HomePage />
-        </section>
-      </div>
+          <section className="content bg-white">
+            <Carousel />
+            <ProductCategory />
+            <HomePage />
+          </section>
+        </div>
+      </Router>
     </div>
   );
 }

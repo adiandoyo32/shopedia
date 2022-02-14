@@ -1,33 +1,30 @@
-import { FC } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { TabBar } from 'antd-mobile'
-import {
-    AppOutline,
-    ShopbagOutline,
-    UserOutline,
-} from 'antd-mobile-icons'
+import { IoCart, IoCartOutline, IoHome, IoHomeOutline, IoPerson, IoPersonOutline } from 'react-icons/io5';
+import classNames from 'classnames';
 
-export const BottomNavigation: FC = () => {
+export const BottomNavigation = () => {
     const navigate = useNavigate();
     const location = useLocation()
     const { pathname } = location
 
     const tabs = [
         {
-            key: '/',
+            path: '/',
             title: 'Home',
-            icon: <AppOutline />,
+            activeIcon: IoHome,
+            icon: IoHomeOutline
         },
         {
-            key: '/about',
-            title: 'about',
-            icon: <ShopbagOutline />,
-            badge: '5',
+            path: '/cart',
+            title: 'Cart',
+            activeIcon: IoCart,
+            icon: IoCartOutline,
         },
         {
-            key: '/user',
+            path: '/user',
             title: 'Profile',
-            icon: <UserOutline />,
+            activeIcon: IoPerson,
+            icon: IoPersonOutline,
         },
     ]
 
@@ -36,10 +33,15 @@ export const BottomNavigation: FC = () => {
     }
 
     return (
-        <TabBar activeKey={pathname} onChange={value => setRouteActive(value)}>
-            {tabs.map(item => (
-                <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
-            ))}
-        </TabBar>
+        <div className='flex flex-row items-center justify-around p-1'>
+            {tabs.map((tab, index) => {
+                return <div key={index} className='flex flex-col items-center cursor-pointer' onClick={() => setRouteActive(tab.path)}>
+                    {pathname == tab.path ? <tab.activeIcon size={24} className='mb-1 text-green-700' /> : <tab.icon size={24} className='mb-1 text-gray-400'  />}
+                    <span className={classNames('text-gray-400 text-xs tracking-wide', { 'text-green-700': pathname == tab.path, 'font-bold': pathname == tab.path })}>
+                        {tab.title}
+                    </span>
+                </div>
+            })}
+        </div>
     )
 }
