@@ -4,7 +4,7 @@ const colors = ["#ace0ff", "#bcffbd", "#e4fabd", "#ffcfac"];
 
 const Carousel = () => {
   return (
-    <Swiper slideSize={90} trackOffset={5.5} stuckAtBoundary={false} loop indicator={() => null}>
+    <Swiper slideSize={90} trackOffset={5.5} stuckAtBoundary={false} loop indicator={() => null} className='mb-2'>
       {colors.map((color, index) => {
         return (
           <Swiper.Item
