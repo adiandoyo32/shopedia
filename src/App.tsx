@@ -1,4 +1,5 @@
 import "./App.css";
+import '@assets/css/main.css'
 import {
   BrowserRouter as Router,
   Routes,
@@ -11,6 +12,7 @@ import HomePage from "./pages/home/HomePage";
 import { BottomNavigation } from "./components/BottomNavigation";
 import { IoLocationSharp } from "react-icons/io5";
 import Carousel from "./pages/home/components/Carousel";
+import ProductCategory from "./pages/home/components/ProductCategory";
 
 interface RouteItem {
   path: string,
@@ -95,6 +97,7 @@ function App() {
 
         <section className="content bg-white">
           <Carousel/>
+          <ProductCategory />
           <HomePage />
         </section>
       </div>
