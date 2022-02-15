@@ -1,6 +1,17 @@
+<div id="top"></div>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Built With
+
+* [React.js](https://reactjs.org/) - The web framework used
+* [Tailwind CSS](https://tailwindcss.com/) - CSS Framework
+* [React Redux](https://react-redux.js.org/) - State Management
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 ## Available Scripts
 
