@@ -1,6 +1,17 @@
+import axiosIns from "../libs/axios";
 import { Product } from "../models/Product";
 
-export const loadProducts = async (): Promise<Product[]> => {
-    const response = await fetch("https://fakestoreapi.com/products");
-    return response.json()
+const loadProducts = async (): Promise<Product[]> => {
+  try {
+    const res = await axiosIns.get<Product[]>("/api/products");
+    return res.data
+  } catch (error) {
+    throw error;
+  }
 };
+
+const ProductService = {
+    loadProducts,
+}
+
+export default ProductService

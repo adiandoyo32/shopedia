@@ -1,5 +1,16 @@
-import axios from "axios";
+import axios, {
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosRequestHeaders,
+} from "axios";
 
-const axiosIns = axios.create()
+const config: AxiosRequestConfig = {
+  headers: <AxiosRequestHeaders>{
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  },
+};
 
-export default axiosIns
+const axiosIns: AxiosInstance = axios.create(config);
+
+export default axiosIns;

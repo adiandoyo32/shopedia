@@ -1,13 +1,8 @@
 import { useState, useEffect } from "react";
 import { Product } from "../../models/Product";
-import { loadProducts } from "../../services/product_service";
+import ProductService from "../../services/product_service";
 import { ProductList } from "./components/ProductList";
 import { ProductListSkeleton } from "./components/ProductListSkeleton";
-import { useDispatch, useSelector } from "react-redux";
-import { bindActionCreators } from "redux";
-import { productActionCreators, State } from "../../redux";
-import apiRoutes from "../../api-mock";
-import axiosIns from "../../libs/axios";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { setProductList, selectProduct } from "../../redux/slice/productSlice";
 
@@ -27,10 +22,6 @@ export default function HomePage() {
   // const initData = async () => {
   //   let asd = apiRoutes;
 
-  //   axiosIns.get("/api/products").then((response) => {
-  //     // console.log(response.data);
-  //   });
-
   //   setIsLoading(true);
   //   try {
   //     const productList = await loadProducts();
@@ -43,7 +34,7 @@ export default function HomePage() {
   //   setIsLoading(false);
   // };
 
-  const loadProducts = () => {
+  useEffect(() => {
     dispatch(
       setProductList([
         {
@@ -56,11 +47,9 @@ export default function HomePage() {
         },
       ])
     );
-  };
 
-  useEffect(() => {
-    // initData();
-    loadProducts();
+    const productList = ProductService.loadProducts();
+    console.log(productList)
   }, []);
 
   const renderProductList = () => {

@@ -76,7 +76,7 @@ function App() {
     //   </Router>
     // </div>
 
-    <div className="App bg-neutral-200">
+    <div className="App bg-neutral-200 h-full">
       <Router>
         <div className="root max-w-2xl relative m-auto">
           <section className="navbar sticky top-0 w-full z-50 bg-white px-4 py-2 flex flex-row items-center justify-between">
