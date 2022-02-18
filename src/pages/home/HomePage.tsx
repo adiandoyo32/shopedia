@@ -1,38 +1,17 @@
-import { useState, useEffect } from "react";
-import { Product } from "../../models/Product";
-import ProductService from "../../services/product_service";
-import { ProductList } from "./components/ProductList";
+import { useEffect } from "react";
 import { ProductListSkeleton } from "./components/ProductListSkeleton";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { setProductList, selectProduct } from "../../redux/slice/productSlice";
+import { setProductList, selectProduct, fetchProductList } from "../../redux/slice/productSlice";
 
 export default function HomePage() {
-  const product = useAppSelector(selectProduct);
+  const productState = useAppSelector(selectProduct);
   const dispatch = useAppDispatch();
-  // const dispatch = useDispatch();
-  // const { setProductList } = bindActionCreators(
-  //   productActionCreators,
-  //   dispatch
-  // );
-  // const productListState = useSelector((state: State) => state.product);
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [products, setProducts] = useState<Product[]>([]);
-
-  // const initData = async () => {
-  //   let asd = apiRoutes;
-
-  //   setIsLoading(true);
-  //   try {
-  //     const productList = await loadProducts();
-  //     // console.log(productList);
-  //     setProductList(productList);
-  //     setProducts(productList);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  //   setIsLoading(false);
-  // };
+  const load = async () => {
+    dispatch(
+      fetchProductList()
+    )
+  }
 
   useEffect(() => {
     dispatch(
@@ -48,19 +27,19 @@ export default function HomePage() {
       ])
     );
 
-    const productList = ProductService.loadProducts();
-    console.log(productList)
+    load()
+    // console.log(productList)
   }, []);
 
   const renderProductList = () => {
-    if (isLoading) return <ProductListSkeleton />;
+    if (productState.fetchProductListState == "loading") return <ProductListSkeleton />;
 
     return (
       <div>
-        {product.productList.map((product) => {
+        {productState.productList.map((product) => {
           return <span key={product.id}>{product.title}</span>;
         })}
-        <ProductList productList={products} />
+        {/* <ProductList productList={products} /> */}
         <div className="h-20"></div>
       </div>
     );

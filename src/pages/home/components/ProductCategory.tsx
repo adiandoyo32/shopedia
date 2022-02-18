@@ -59,7 +59,7 @@ const productCategoryList = [
 ];
 
 const ProductCategory = () => {
-  const [isReachedLeft, setIsReachedLeft] = useState(true)
+  const [isReachedLeft, setIsReachedLeft] = useState(false)
   const [isReachedRight, setIsReachedRight] = useState(false)
   const productCategoryScroll = useRef<HTMLDivElement>(null);
 
