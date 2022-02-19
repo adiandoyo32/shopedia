@@ -6,13 +6,12 @@ import {
   Route,
 } from "react-router-dom";
 import AboutPage from "./pages/AboutPage";
-import UserPage from "./pages/user/UserPage";
+import ProfilePage from "./pages/profile/ProfilePage";
 import NotFoundPage from "./pages/error/NotFoundPage";
 import HomePage from "./pages/home/HomePage";
 import { BottomNavigation } from "./components/BottomNavigation";
 import { IoLocationSharp } from "react-icons/io5";
-import Carousel from "./pages/home/components/Carousel";
-import ProductCategory from "./pages/home/components/ProductCategory";
+import CartPage from "./pages/cart/CartPage";
 
 interface RouteItem {
   path: string,
@@ -30,8 +29,8 @@ const routes: Array<RouteItem> = [
     component: <AboutPage />
   },
   {
-    path: "/user",
-    component: <UserPage />,
+    path: "/profile",
+    component: <ProfilePage />,
     isAuth: true
   },
   {
@@ -76,7 +75,7 @@ function App() {
     //   </Router>
     // </div>
 
-    <div className="App bg-neutral-200 h-full">
+    <div className="App bg-neutral-200 h-full w-full">
       <Router>
         <div className="root max-w-2xl relative m-auto">
           <section className="navbar sticky top-0 w-full z-50 bg-white px-4 py-2 flex flex-row items-center justify-between">
@@ -92,16 +91,18 @@ function App() {
             </div>
           </section>
 
-          <section className="footer fixed bottom-0 w-full max-w-2xl z-50 bg-white">
+          <section className="footer fixed left-0 right-0 bottom-0 mx-auto w-full max-w-2xl z-50 bg-white">
             <div className="bottom-navigation">
               <BottomNavigation />
             </div>
           </section>
 
-          <section className="content bg-white">
-            <Carousel />
-            <ProductCategory />
-            <HomePage />
+          <section className="content min-h-screen py-2 bg-white">
+            <Routes>
+              <Route path="/" element={<HomePage />}></Route>
+              <Route path="/cart" element={<CartPage />}></Route>
+              <Route path="/profile" element={<ProfilePage />}></Route>
+            </Routes>
           </section>
         </div>
       </Router>

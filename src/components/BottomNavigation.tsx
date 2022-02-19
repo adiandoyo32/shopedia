@@ -21,7 +21,7 @@ export const BottomNavigation = () => {
             icon: IoCartOutline,
         },
         {
-            path: '/user',
+            path: '/profile',
             title: 'Profile',
             activeIcon: IoPerson,
             icon: IoPersonOutline,
@@ -33,7 +33,7 @@ export const BottomNavigation = () => {
     }
 
     return (
-        <div className='flex flex-row items-center justify-around p-1'>
+        <div className='flex flex-row items-center justify-around p-1 bg-slate-300'>
             {tabs.map((tab, index) => {
                 return <div key={index} className='flex flex-col items-center cursor-pointer' onClick={() => setRouteActive(tab.path)}>
                     {pathname == tab.path ? <tab.activeIcon size={24} className='mb-1 text-green-700' /> : <tab.icon size={24} className='mb-1 text-gray-400'  />}

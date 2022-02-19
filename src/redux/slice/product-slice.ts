@@ -5,7 +5,7 @@ import { RootState } from "../store";
 
 export interface ProductState {
   productList: Product[];
-  fetchProductListState: "idle" | "loading" | "failed";
+  productListStatus: "idle" | "loading" | "failed";
   product: Product;
 }
 
@@ -19,7 +19,7 @@ const initialState: ProductState = {
     image: "",
     price: 0,
   },
-  fetchProductListState: "idle",
+  productListStatus: "idle",
 };
 
 export const fetchProductList = createAsyncThunk(
@@ -43,16 +43,16 @@ export const productSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProductList.pending, (state) => {
-      state.fetchProductListState = "loading";
+      state.productListStatus = "loading";
     });
 
     builder.addCase(fetchProductList.fulfilled, (state, action) => {
-      state.fetchProductListState = "idle";
+      state.productListStatus = "idle";
       state.productList = action.payload;
     });
 
     builder.addCase(fetchProductList.rejected, (state, action) => {
-      state.fetchProductListState = "failed";
+      state.productListStatus = "failed";
       console.log(action.payload);
     });
   },

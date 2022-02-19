@@ -1,6 +1,5 @@
 import {axiosIns} from "../libs/axios";
 import MockAdapter from "axios-mock-adapter";
-import { Product } from "../models/Product";
 
 const apiRoutes = [
   {
@@ -11,35 +10,35 @@ const apiRoutes = [
         image: "/images/200.png",
         desc: "Lorem ipsum dolor sit amet",
         title: "Product 1",
-        price: "Rp.100.000",
+        price: "100.000",
       },
       {
         id: "product-2",
         image: "/images/200.png",
         desc: "Lorem ipsum dolor sit amet",
         title: "Product 2",
-        price: "Rp.100.000",
+        price: "100.000",
       },
       {
         id: "product-3",
         image: "/images/200.png",
         desc: "Lorem ipsum dolor sit amet",
         title: "Product 3",
-        price: "Rp.100.000",
+        price: "100.000",
       },
       {
         id: "product-4",
         image: "/images/200.png",
         desc: "Lorem ipsum dolor sit amet",
         title: "Product 4",
-        price: "Rp.100.000",
+        price: "100.000",
       },
       {
         id: "product-5",
         image: "/images/200.png",
         desc: "Lorem ipsum dolor sit amet",
         title: "Product 5",
-        price: "Rp.100.000",
+        price: "100.000",
       },
     ],
   },

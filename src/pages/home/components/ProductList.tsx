@@ -1,19 +1,18 @@
-import { FC } from "react";
-import { Product } from "../../../models/Product";
+import { useAppSelector } from "../../../redux/hooks";
+import { selectProduct } from "../../../redux/slice/product-slice";
 import "../styles/product-card.css"
 import { ProductCard } from "./ProductCard";
 
-interface ProductListProps {
-    productList: Product[]
-}
-
-export const ProductList: FC<ProductListProps> = (props) => {
+export const ProductList: React.FC = () => {
+    const productState = useAppSelector(selectProduct);
     return (
         <div>
-            <div className="w-full flex flex-wrap items-stretch">
-                {props.productList.map((product, index) => {
-                    return <ProductCard key={index} product={product} />
-                })}
+            <div className="flex flex-wrap">
+                {
+                    productState.productList.map((product, index) => {
+                        return <ProductCard key={index} product={product} />
+                    })
+                }
             </div>
         </div>
     )

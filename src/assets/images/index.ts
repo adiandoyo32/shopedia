@@ -9,6 +9,7 @@ import HomeLiving from "./home-living.png";
 import Watches from "./watches.png";
 import ComputerLaptop from "./computer-laptop.png";
 import Camera from "./camera.png";
+import Placeholder from "./200.png"
 
 export {
   Electronic,
@@ -21,5 +22,6 @@ export {
   HomeLiving,
   Watches,
   ComputerLaptop,
-  Camera
+  Camera,
+  Placeholder
 };
