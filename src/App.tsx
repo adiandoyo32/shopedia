@@ -61,20 +61,6 @@ function PublicRoute(props: PublicRouteProps) {
 
 function App() {
   return (
-    // <div className="App max-w-2xl m-auto">
-    //   <Router basename="/">
-    //     <div className="body p-6">
-    //       <Routes>
-    //         {/* {routes.map((route, index) => <PublicRoute key={index} route={route}/>)} */}
-    //         {routes.map((route, index) => <Route key={index} path={route.path} element={route.component} />)}
-    //       </Routes>
-    //     </div>
-    //     <div className="bottom">
-    //       <BottomNavigation />
-    //     </div>
-    //   </Router>
-    // </div>
-
     <div className="App bg-neutral-200 h-full w-full">
       <Router>
         <div className="root max-w-2xl relative m-auto">
@@ -83,7 +69,7 @@ function App() {
               <span className="tracking-wider">Shopedia</span>
             </div>
             <div className="flex items-center cursor-pointer">
-              <IoLocationSharp size={24} className="text-red-500" />
+              <IoLocationSharp size={20} className="text-red-500" />
               <div className="ml-2 px-1 w-28 ">
                 <p className="text-xs text-gray-400 truncate">Lokasi</p>
                 <p className="text-sm font-bold truncate">Pontianak Kota - Pontianak</p>
@@ -97,7 +83,7 @@ function App() {
             </div>
           </section>
 
-          <section className="content min-h-screen py-2 bg-white">
+          <section className="content min-h-screen max-w-2xl py-2 bg-white">
             <Routes>
               <Route path="/" element={<HomePage />}></Route>
               <Route path="/cart" element={<CartPage />}></Route>
