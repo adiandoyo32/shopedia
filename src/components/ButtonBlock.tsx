@@ -6,7 +6,7 @@ interface ButtonBlockProps {
 
 const ButtonBlock: React.FC<ButtonBlockProps> = (props) => {
     return (
-        <button type="button" onClick={() => props.onPress} className={`bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 rounded w-full ${props.className}`}>
+        <button type="button" onClick={() => props.onPress} className={`bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded w-full ${props.className}`}>
             {props.children}
         </button>
     )
