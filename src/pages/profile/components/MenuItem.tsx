@@ -8,12 +8,10 @@ interface MenuItemProps {
 
 const MenuItem: React.FC<MenuItemProps> = (props) => {
   return (
-    <div className="bg-white hover:bg-gray-50 pl-4">
-      <div className="flex justify-between items-center border-gray-200 border-b py-4 pr-3 cursor-pointer">
-        <div className="flex items-center space-x-3">
-          {props.icon}
-          <p className="text-sm font-semibold">{props.name}</p>
-        </div>
+    <div className="flex items-center bg-white hover:bg-gray-50 pl-4 space-x-3">
+      {props.icon}
+      <div className="w-full flex justify-between items-center border-b border-gray-200  py-4 pr-3 cursor-pointer">
+        <p className="text-sm font-semibold">{props.name}</p>
         <IoChevronForward size={16} />
       </div>
     </div>

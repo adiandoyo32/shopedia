@@ -12,7 +12,7 @@ function ProfilePage() {
           <p className="text-xs">john.smith@email.com</p>
         </div>
       </div>
-      <div className="flex flex-col mb-3">
+      <div className="flex flex-col mb-3 w-full">
         <MenuItem icon={<IoInformation size={16} />} name="About" />
         <MenuItem icon={<IoLogOutOutline size={16} />} name="Logout" />
       </div>
