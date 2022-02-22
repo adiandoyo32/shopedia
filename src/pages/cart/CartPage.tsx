@@ -1,9 +1,7 @@
-import React from 'react'
-
 function CartPage() {
     return (
-        <div>
-            cart page
+        <div className="flex flex-col">
+            
         </div>
     )
 }

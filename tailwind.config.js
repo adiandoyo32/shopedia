@@ -3,7 +3,9 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    minWidth: {
+      '2xl': '42rem',
+    }
   },
   plugins: [],
 }
