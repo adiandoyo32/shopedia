@@ -3,12 +3,12 @@ import ButtonBlock from "../../components/ButtonBlock";
 
 describe("ButtonBlock Component", () => {
   it("renders button block", () => {
-    const { getByTestId } = render(<ButtonBlock />);
-    expect(getByTestId("button")).toBeTruthy();
+    const { getByRole } = render(<ButtonBlock /> );
+    expect(getByRole("button")).toBeInTheDocument();
   });
 
   it("renders button block with props", () => {
-    const { getByTestId } = render(<ButtonBlock>Click</ButtonBlock>);
-    expect(getByTestId("button")).toHaveTextContent("Click")
+    const { getByRole } = render(<ButtonBlock>Click</ButtonBlock>);
+    expect(getByRole("button")).toHaveTextContent("Click")
   });
 });
