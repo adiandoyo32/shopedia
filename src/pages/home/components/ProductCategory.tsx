@@ -1,5 +1,6 @@
 import ProductCategoryItem from "./ProductCategoryItem";
-import { ReactComponent as AllProduct } from "@assets/icons/all-product.svg";
+import { ReactComponent as AllProduct } from "./../../../assets/icons/all-product.svg";
+
 import {
   Electronic,
   Handphone,

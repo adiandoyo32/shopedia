@@ -1,4 +1,4 @@
-import { ReactComponent as Avatar } from "@assets/icons/avatar.svg";
+import { ReactComponent as Avatar } from "./../../assets/icons/avatar.svg";
 import { IoInformation, IoLogOutOutline } from "react-icons/io5";
 import MenuItem from "./components/MenuItem";
 
