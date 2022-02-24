@@ -3,17 +3,15 @@ import { selectProduct } from "../../../redux/slice/product-slice";
 import "../styles/product-card.css"
 import { ProductCard } from "./ProductCard";
 
-export const ProductList: React.FC = () => {
+export const ProductList = () => {
     const productState = useAppSelector(selectProduct);
     return (
-        <div>
-            <div className="flex flex-wrap">
-                {
-                    productState.productList.map((product, index) => {
-                        return <ProductCard key={index} product={product} />
-                    })
-                }
-            </div>
+        <div className="flex flex-wrap">
+            {
+                productState.productList.map((product, index) => {
+                    return <ProductCard key={index} product={product} />
+                })
+            }
         </div>
     )
 }

@@ -1,5 +1,3 @@
-import {AxiosError} from 'axios'
-
 import { axiosHttpAdapter } from "../libs/axios";
 import { Product } from "../models/Product";
 
