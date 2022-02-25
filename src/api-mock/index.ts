@@ -47,7 +47,7 @@ const apiRoutes = [
         status: 200,
         data: [
             {
-                id: "product-1",
+                id: 1,
                 image: "/images/200.png",
                 desc: "Lorem ipsum dolor sit amet",
                 title: "Product 1",
@@ -55,7 +55,7 @@ const apiRoutes = [
                 qty: 2
             },
             {
-                id: "product-2",
+                id: 2,
                 image: "/images/200.png",
                 desc: "Lorem ipsum dolor sit amet",
                 title: "Product 1",

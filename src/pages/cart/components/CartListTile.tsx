@@ -2,6 +2,8 @@ import { Image } from "antd-mobile";
 import { IoAddOutline, IoRemoveOutline } from "react-icons/io5";
 import ButtonIcon from "../../../components/ButtonIcon";
 import CartItem from "../../../models/CartItem";
+import { useAppDispatch } from "../../../redux/hooks";
+import { decrementQty, incrementQty } from "../../../redux/slice/cart-slice";
 
 interface CartItemProps {
   product: CartItem;
@@ -9,6 +11,16 @@ interface CartItemProps {
 }
 
 const CartListTile: React.FC<CartItemProps> = (props) => {
+  const dispatch = useAppDispatch()
+
+  const decrementCartItemQty = () => {
+    dispatch(decrementQty(props.product));
+  }
+
+  const incrementCartItemQty = () => {
+    dispatch(incrementQty(props.product));
+  }
+
   return (
     <div className="flex bg-white transition hover:bg-gray-50 p-4 space-x-4 border-gray-200 border-b">
       <Image
@@ -24,11 +36,11 @@ const CartListTile: React.FC<CartItemProps> = (props) => {
         </p>
         <p className="font-bold text-sm">{props.product.title}</p>
         <div className="flex items-center space-x-4">
-          <ButtonIcon>
+          <ButtonIcon onClick={() => decrementCartItemQty()}>
             <IoRemoveOutline size={16} className="text-green-600" />
           </ButtonIcon>
           <p className="font-bold text-sm">{props.product.qty}</p>
-          <ButtonIcon>
+          <ButtonIcon onClick={() => incrementCartItemQty()}>
             <IoAddOutline size={16} className="text-green-600" />
           </ButtonIcon>
         </div>

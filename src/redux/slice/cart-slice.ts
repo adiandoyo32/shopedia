@@ -26,8 +26,20 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         setCartList: (state, action: PayloadAction<CartItem[]>) => {
-            state.cartList = action.payload
-        }
+            state.cartList = action.payload;
+        },
+        decrementQty: (state, { payload }: PayloadAction<CartItem>) => {
+            const item = { ...payload };
+            item.qty--
+            const index = state.cartList.findIndex((cartItem) => cartItem.id == payload.id);
+            state.cartList.splice(index, 1, item)
+        },
+        incrementQty: (state, { payload }: PayloadAction<CartItem>) => {
+            const item = { ...payload };
+            item.qty++
+            const index = state.cartList.findIndex((cartItem) => cartItem.id == payload.id);
+            state.cartList.splice(index, 1, item)
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchCartList.pending, (state) => {
@@ -43,7 +55,7 @@ export const cartSlice = createSlice({
     },
 });
 
-export const { setCartList } = cartSlice.actions;
-export const selectCart = (state: RootState) => state.cart
+export const { setCartList, decrementQty, incrementQty } = cartSlice.actions;
+export const selectCart = (state: RootState) => state.cart;
 
-export default cartSlice.reducer
+export default cartSlice.reducer;
