@@ -16,8 +16,8 @@ describe("InputField Component", () => {
 
   it("change in input value", () => {
     const { getByRole } = render(<InputField label="Label" />);
-    const input = getByRole("textbox") as HTMLInputElement
+    const input = getByRole("textbox")
     fireEvent.change(input, { target: { value: "example" } })
-    expect(input.value).toBe('example')
+    expect(input).toHaveValue("example")
   })
 });
