@@ -1,9 +1,10 @@
 import { axiosHttpAdapter } from "../libs/axios"
+import CartItem from "../models/CartItem";
 import { Product } from "../models/Product"
 
-const loadCart = async (): Promise<Product[]> => {
+const loadCart = async (): Promise<CartItem[]> => {
     try {
-        const res = await axiosHttpAdapter<Product[]>({
+        const res = await axiosHttpAdapter<CartItem[]>({
             method: "GET",
             url: '/api/cart'
         })

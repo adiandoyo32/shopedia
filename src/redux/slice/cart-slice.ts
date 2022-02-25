@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Product } from "../../models/Product";
+import CartItem from "../../models/CartItem";
 import CartService from "../../services/cart-services";
 import { RootState } from "../store";
 
 export interface CartState {
-    cartList: Product[];
+    cartList: CartItem[];
     cartListStatus: "idle" | "loading" | "failed";
 }
 
@@ -25,7 +25,7 @@ export const cartSlice = createSlice({
     name: "cart",
     initialState,
     reducers: {
-        setCartList: (state, action: PayloadAction<Product[]>) => {
+        setCartList: (state, action: PayloadAction<CartItem[]>) => {
             state.cartList = action.payload
         }
     },
@@ -33,7 +33,7 @@ export const cartSlice = createSlice({
         builder.addCase(fetchCartList.pending, (state) => {
             state.cartListStatus = "loading";
         });
-        builder.addCase(fetchCartList.fulfilled, (state, action) => {
+        builder.addCase(fetchCartList.fulfilled, (state, action: PayloadAction<CartItem[]>) => {
             state.cartListStatus = "idle";
             state.cartList = action.payload;
         });
