@@ -1,8 +1,8 @@
 import { useEffect } from "react"
-import ItemList from "../../components/ItemList"
+import List from "../../components/List"
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchCartList, selectCart } from "../../redux/slice/cart-slice";
-import CartItem from "./components/CartItem";
+import CartListTile from "./components/CartListTile";
 
 function CartPage() {
     const cartState = useAppSelector(selectCart)
@@ -18,9 +18,9 @@ function CartPage() {
 
     return (
         <div className="flex flex-col">
-            <ItemList
+            <List
                 data={cartState.cartList}
-                renderItem={(product, index) => <CartItem key={index} product={product} />}
+                renderItem={(cartItem, index) => <CartListTile key={index} product={cartItem} />}
             />
         </div>
     )

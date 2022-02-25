@@ -1,10 +1,10 @@
-interface ItemListProps<T> {
+interface ListProps<T> {
     data: T[];
     renderItem: (item: T, index: number) => React.ReactNode
 }
 
-const ItemList = <T, >(props: ItemListProps<T>) => {
+const List = <T, >(props: ListProps<T>) => {
     return <>{props.data.map(props.renderItem)}</>
 }
 
-export default ItemList
+export default List
