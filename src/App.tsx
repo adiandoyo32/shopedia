@@ -8,6 +8,7 @@ import HomePage from "./pages/home/HomePage";
 import { BottomNavigation } from "./components/BottomNavigation";
 import { IoLocationSharp } from "react-icons/io5";
 import CartPage from "./pages/cart/CartPage";
+import EditProfilePage from "./pages/profile/EditProfilePage";
 
 interface RouteItem {
   path: string;
@@ -81,6 +82,7 @@ function App() {
                 <Route path="/" element={<HomePage />}></Route>
                 <Route path="/cart" element={<CartPage />}></Route>
                 <Route path="/profile" element={<ProfilePage />}></Route>
+                <Route path="/profile/edit" element={<EditProfilePage />}></Route>
               </Routes>
             </section>
 
