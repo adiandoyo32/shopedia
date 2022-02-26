@@ -13,6 +13,10 @@ const initialState: CartState = {
     cartListStatus: "idle",
 };
 
+const findCartItemIndex = (cartList: CartItem[], id: number): number => {
+    return cartList.findIndex((cartItem) => cartItem.id == id);
+};
+
 export const fetchCartList = createAsyncThunk("cart/fetchCartList", async (_, { rejectWithValue }) => {
     try {
         return await CartService.loadCart();
@@ -28,17 +32,27 @@ export const cartSlice = createSlice({
         setCartList: (state, action: PayloadAction<CartItem[]>) => {
             state.cartList = action.payload;
         },
+        addToCart: (state, { payload }: PayloadAction<CartItem>) => {
+            console.log(payload)
+            state.cartList = [...state.cartList, payload]
+        },
         decrementQty: (state, { payload }: PayloadAction<CartItem>) => {
-            const item = { ...payload };
-            item.qty--
-            const index = state.cartList.findIndex((cartItem) => cartItem.id == payload.id);
-            state.cartList.splice(index, 1, item)
+            const index = findCartItemIndex(state.cartList, payload.id);
+            if (state.cartList[index].qty > 1) {
+                state.cartList[index].qty -= 1;
+            } else {
+                state.cartList.splice(index, 1);
+            }
         },
         incrementQty: (state, { payload }: PayloadAction<CartItem>) => {
-            const item = { ...payload };
-            item.qty++
-            const index = state.cartList.findIndex((cartItem) => cartItem.id == payload.id);
-            state.cartList.splice(index, 1, item)
+            const index = findCartItemIndex(state.cartList, payload.id);
+            if (state.cartList[index].qty < 99) {
+                state.cartList[index].qty += 1;
+            }
+        },
+        removeFromCart: (state, { payload }: PayloadAction<number>) => {
+            const index = findCartItemIndex(state.cartList, payload);
+            state.cartList.splice(index, 1);
         },
     },
     extraReducers: (builder) => {
@@ -55,7 +69,7 @@ export const cartSlice = createSlice({
     },
 });
 
-export const { setCartList, decrementQty, incrementQty } = cartSlice.actions;
+export const { setCartList, addToCart, decrementQty, incrementQty, removeFromCart } = cartSlice.actions;
 export const selectCart = (state: RootState) => state.cart;
 
 export default cartSlice.reducer;

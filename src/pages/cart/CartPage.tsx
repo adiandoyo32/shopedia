@@ -9,7 +9,9 @@ function CartPage() {
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        loadCart();
+        if (cartState.cartList.length == 0) {
+            loadCart();
+        }
     }, [])
 
     const loadCart = async () => {

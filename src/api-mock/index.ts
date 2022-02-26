@@ -60,7 +60,7 @@ const apiRoutes = [
                 desc: "Lorem ipsum dolor sit amet",
                 title: "Product 1",
                 price: "Rp.100.000",
-                qty: 10
+                qty: 98
             },
         ],
     },
