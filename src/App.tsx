@@ -80,9 +80,9 @@ function App() {
             <section className="content min-h-screen py-2 bg-white">
               <Routes>
                 <Route path="/" element={<HomePage />}></Route>
-                <Route path="/cart" element={<CartPage />}></Route>
-                <Route path="/profile" element={<ProfilePage />}></Route>
-                <Route path="/profile/edit" element={<EditProfilePage />}></Route>
+                <Route path="cart" element={<CartPage />}></Route>
+                <Route path="profile" element={<ProfilePage />} />
+                <Route path="profile/edit" element={<EditProfilePage />} />
               </Routes>
             </section>
 

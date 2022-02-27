@@ -1,6 +1,5 @@
 import { axiosHttpAdapter } from "../libs/axios"
 import CartItem from "../models/CartItem";
-import { Product } from "../models/Product"
 
 const loadCart = async (): Promise<CartItem[]> => {
     try {
