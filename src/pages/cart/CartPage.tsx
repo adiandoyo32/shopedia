@@ -18,14 +18,21 @@ function CartPage() {
         dispatch(fetchCartList())
     }
 
-    return (
-        <div className="flex flex-col">
-            <List
-                data={cartState.cartList}
-                renderItem={(cartItem, index) => <CartListTile key={index} product={cartItem} />}
-            />
-        </div>
-    )
+    return <>
+        {
+            cartState.cartList.length > 0 ?
+                <div className="flex flex-col">
+                    <List
+                        data={cartState.cartList}
+                        renderItem={(cartItem, index) => <CartListTile key={index} product={cartItem} />}
+                    />
+                </div>
+                :
+                <div className="m-auto">
+                    Cart is empty
+                </div>
+        }
+    </>
 }
 
 export default CartPage

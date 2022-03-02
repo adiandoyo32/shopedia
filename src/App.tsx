@@ -60,8 +60,7 @@ function App() {
   return (
     <div className="App h-100 bg-neutral-200">
       <Router>
-        <div className="page relative min-h-screen min-w-2xl max-w-2xl mx-auto bg-white">
-          <div className="content">
+        <div className="page relative min-h-screen min-w-2xl max-w-2xl mx-auto flex flex-col bg-white">
             <section className="navbar sticky top-0 z-30 bg-white px-4 py-2 flex flex-row items-center justify-between">
               <div className="logo font-bold text-xl">
                 <span className="tracking-wider">Shopedia</span>
@@ -77,7 +76,7 @@ function App() {
               </div>
             </section>
 
-            <section className="content py-2 bg-white">
+            <section className="grow flex flex-col content py-2 bg-white">
               <Routes>
                 <Route path="/" element={<HomePage />}></Route>
                 <Route path="cart" element={<CartPage />}></Route>
@@ -91,7 +90,6 @@ function App() {
                 <BottomNavigation />
               </div>
             </section>
-          </div>
         </div>
       </Router>
     </div>
