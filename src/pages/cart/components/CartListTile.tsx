@@ -27,7 +27,7 @@ const CartListTile: React.FC<CartItemProps> = (props) => {
   }
 
   return (
-    <div className="flex justify-between bg-white transition hover:bg-gray-50 p-4  border-gray-200 border-b">
+    <div className={`flex justify-between bg-white transition hover:bg-gray-50 p-4  border-gray-200 ${props.className}`}>
       <div className="grow flex space-x-4">
         <Image
           className="rounded-md"

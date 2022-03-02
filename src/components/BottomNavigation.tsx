@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { IoCart, IoCartOutline, IoHome, IoHomeOutline, IoPerson, IoPersonOutline } from 'react-icons/io5';
 import classNames from 'classnames';
+import ProfileService from '../services/profile-service';
 
 export const BottomNavigation = () => {
     const navigate = useNavigate();
@@ -29,6 +30,10 @@ export const BottomNavigation = () => {
     ]
 
     const setRouteActive = (path: string) => {
+        if (path == '/profile' && !ProfileService.isLoggedIn()) {
+            navigate('/login')
+            return
+        }
         navigate(path);
     }
 
@@ -36,7 +41,7 @@ export const BottomNavigation = () => {
         <div className='flex flex-row items-center justify-around p-1 bg-white'>
             {tabs.map((tab, index) => {
                 return <div key={index} className='flex flex-col items-center cursor-pointer' onClick={() => setRouteActive(tab.path)}>
-                    {pathname === tab.path ? <tab.activeIcon size={24} className='mb-1 text-green-600' /> : <tab.icon size={24} className='mb-1 text-gray-400'  />}
+                    {pathname === tab.path ? <tab.activeIcon size={24} className='mb-1 text-green-600' /> : <tab.icon size={24} className='mb-1 text-gray-400' />}
                     <span className={classNames('text-gray-400 text-xs tracking-wide', { 'text-green-600': pathname == tab.path, 'font-bold': pathname === tab.path })}>
                         {tab.title}
                     </span>

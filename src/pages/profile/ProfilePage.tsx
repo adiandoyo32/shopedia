@@ -4,10 +4,11 @@ import MenuItem from "./components/MenuItem";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { loadProfile, selectProfile } from "../../redux/slice/profile.slice";
+import { loadProfile, logout, selectProfile } from "../../redux/slice/profile.slice";
 import ModalDialog, { useModalDialog } from "../../components/ModalDialog";
 import TextButton from "../../components/TextButton";
 import ButtonBlock from "../../components/ButtonBlock";
+import ProfileService from "../../services/profile-service";
 
 function ProfilePage() {
   const dispatch = useAppDispatch()
@@ -15,7 +16,9 @@ function ProfilePage() {
   const { visible, toggle } = useModalDialog()
 
   useEffect(() => {
-    dispatch(loadProfile())
+    if (ProfileService.isLoggedIn()) {
+      dispatch(loadProfile())
+    }
   }, [])
 
   return (
@@ -41,7 +44,12 @@ function ProfilePage() {
         </div>
         <div className="flex space-x-3">
           <TextButton onClick={toggle}>Cancel</TextButton>
-          <ButtonBlock>
+          <ButtonBlock
+            onClick={() => {
+              dispatch(logout())
+              toggle()
+            }
+            }>
             Logout
           </ButtonBlock>
         </div>

@@ -22,16 +22,21 @@ export const profileSlice = createSlice({
         saveProfile: (state, { payload }: PayloadAction<Profile>) => {
             state.profile = payload;
             localStorage.setItem("profile", JSON.stringify(payload));
-            
         },
         loadProfile: (state) => {
-            const profile: Profile = JSON.parse(localStorage.getItem("profile") ?? "");
+            const profileJson = localStorage.getItem("profile")
+            if (profileJson == null) return
+            const profile: Profile = JSON.parse(profileJson);
             state.profile = profile;
         },
+        logout: (state) => {
+            localStorage.removeItem("profile")
+            state.profile = initialState.profile
+        }
     },
 });
 
-export const { saveProfile, loadProfile } = profileSlice.actions;
+export const { saveProfile, loadProfile, logout } = profileSlice.actions;
 export const selectProfile = (state: RootState) => state.profile;
 
 export default profileSlice.reducer;

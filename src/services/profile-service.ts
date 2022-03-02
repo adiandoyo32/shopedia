@@ -1,16 +1,12 @@
-import Profile from "../models/Profile";
-
-const loadProfile = (): void => {
-    let user = localStorage.getItem('profile')
-}
-
-const saveProfile = (user: Profile) => {
-    localStorage.setItem('profile', JSON.stringify(user));
-}
+const isLoggedIn = (): boolean => {
+    const profileJson = localStorage.getItem("profile");
+    if (profileJson) {
+        return true;
+    } else return false;
+};
 
 const ProfileService = {
-    loadProfile,
-    saveProfile,
-}
+    isLoggedIn
+};
 
-export default ProfileService
+export default ProfileService;

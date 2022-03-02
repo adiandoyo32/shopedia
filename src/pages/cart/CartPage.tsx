@@ -24,7 +24,11 @@ function CartPage() {
                 <div className="flex flex-col">
                     <List
                         data={cartState.cartList}
-                        renderItem={(cartItem, index) => <CartListTile key={index} product={cartItem} />}
+                        renderItem={(cartItem, index) => <CartListTile
+                            key={index}
+                            product={cartItem}
+                            className={index != cartState.cartList.length - 1 ? 'border-b' : ''}
+                        />}
                     />
                 </div>
                 :
