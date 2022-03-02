@@ -1,7 +1,7 @@
 import { Image } from "antd-mobile";
 import classNames from "classnames";
 import { IoAddOutline, IoRemoveOutline, IoTrashOutline } from "react-icons/io5";
-import ButtonIcon from "../../../components/ButtonIcon";
+import ButtonIconOutline from "../../../components/ButtonIconOutline";
 import CartItem from "../../../models/CartItem";
 import { useAppDispatch } from "../../../redux/hooks";
 import { decrementQty, incrementQty, removeFromCart } from "../../../redux/slice/cart-slice";
@@ -42,20 +42,20 @@ const CartListTile: React.FC<CartItemProps> = (props) => {
           </p>
           <p className="font-bold text-sm">{props.product.title}</p>
           <div className="flex items-center space-x-4 ">
-            <ButtonIcon onClick={() => decrementCartItemQty()}>
+            <ButtonIconOutline onClick={() => decrementCartItemQty()}>
               <IoRemoveOutline size={16} className="text-green-600" />
-            </ButtonIcon>
+            </ButtonIconOutline>
             <p className="font-bold text-sm w-6 text-center">{props.product.qty}</p>
-            <ButtonIcon disabled={props.product.qty < 99 ? false : true} onClick={() => incrementCartItemQty()}>
+            <ButtonIconOutline disabled={props.product.qty < 99 ? false : true} onClick={() => incrementCartItemQty()}>
               <IoAddOutline size={16} className={classNames({ 'text-green-600': props.product.qty < 99, 'text-gray-300': props.product.qty > 98 })} />
-            </ButtonIcon>
+            </ButtonIconOutline>
           </div>
         </div>
       </div>
       <div>
-        <ButtonIcon color="red" onClick={() => removeItemFromCart()}>
+        <ButtonIconOutline color="red" onClick={() => removeItemFromCart()}>
           <IoTrashOutline size={16} className="text-red-500" />
-        </ButtonIcon>
+        </ButtonIconOutline>
       </div>
     </div>
   );

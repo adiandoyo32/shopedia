@@ -62,7 +62,7 @@ function App() {
       <Router>
         <div className="page relative min-h-screen min-w-2xl max-w-2xl mx-auto bg-white">
           <div className="content">
-            <section className="navbar sticky top-0 z-50 bg-white px-4 py-2 flex flex-row items-center justify-between">
+            <section className="navbar sticky top-0 z-30 bg-white px-4 py-2 flex flex-row items-center justify-between">
               <div className="logo font-bold text-xl">
                 <span className="tracking-wider">Shopedia</span>
               </div>
@@ -77,7 +77,7 @@ function App() {
               </div>
             </section>
 
-            <section className="content min-h-screen py-2 bg-white">
+            <section className="content py-2 bg-white">
               <Routes>
                 <Route path="/" element={<HomePage />}></Route>
                 <Route path="cart" element={<CartPage />}></Route>
@@ -86,7 +86,7 @@ function App() {
               </Routes>
             </section>
 
-            <section className="footer fixed left-0 right-0 bottom-0 mx-auto max-w-2xl z-50 bg-white">
+            <section className="footer fixed left-0 right-0 bottom-0 mx-auto max-w-2xl z-30 bg-white">
               <div className="bottom-navigation">
                 <BottomNavigation />
               </div>
