@@ -9,6 +9,7 @@ import { BottomNavigation } from "./components/BottomNavigation";
 import { IoLocationSharp } from "react-icons/io5";
 import CartPage from "./pages/cart/CartPage";
 import EditProfilePage from "./pages/profile/EditProfilePage";
+import LoginPage from "./pages/login/LoginPage";
 
 interface RouteItem {
   path: string;
@@ -29,6 +30,10 @@ const routes: Array<RouteItem> = [
     path: "/profile",
     component: <ProfilePage />,
     isAuth: true,
+  },
+  {
+    path: "/login",
+    component: <LoginPage />,
   },
   {
     path: "*",
@@ -68,7 +73,7 @@ function App() {
               <div className="flex items-center cursor-pointer">
                 <IoLocationSharp size={24} className="text-red-500" />
                 <div className="ml-2 px-1 w-32 ">
-                  <p className="text-xs text-gray-400 truncate">Lokasi</p>
+                  <p className="text-xs text-gray-400 truncate">Location</p>
                   <p className="text-sm font-bold truncate">
                     Pontianak Kota
                   </p>
@@ -76,12 +81,13 @@ function App() {
               </div>
             </section>
 
-            <section className="grow flex flex-col content py-2 bg-white">
+            <section className="grow flex flex-col content py-2 bg-white mb-20">
               <Routes>
                 <Route path="/" element={<HomePage />}></Route>
                 <Route path="cart" element={<CartPage />}></Route>
                 <Route path="profile" element={<ProfilePage />} />
                 <Route path="profile/edit" element={<EditProfilePage />} />
+                <Route path="login" element={<LoginPage />} />
               </Routes>
             </section>
 
