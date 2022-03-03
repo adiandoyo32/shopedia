@@ -33,7 +33,7 @@ const InputField: React.FC<InputFieldProps> = (props) => {
       <input
         id={camelize(props.label)}
         value={props.value}
-        type="text"
+        type={props.type ?? 'text'}
         className={classNames(`w-full mb-1.5 block p-2.5 bg-gray-50 border text-sm rounded-md focus:outline-none focus:ring-2 transition`, inputState)}
         placeholder={props.label}
         onChange={props.onChange}

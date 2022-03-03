@@ -1,11 +1,13 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { IoCart, IoCartOutline, IoHome, IoHomeOutline, IoPerson, IoPersonOutline } from 'react-icons/io5';
 import classNames from 'classnames';
-import ProfileService from '../services/profile-service';
+import ProfileService from '../services/auth-service';
+import { useAuth } from '../redux/hooks';
 
 export const BottomNavigation = () => {
     const navigate = useNavigate();
     const location = useLocation()
+    const isAuth = useAuth()
     const { pathname } = location
 
     const tabs = [
@@ -30,7 +32,7 @@ export const BottomNavigation = () => {
     ]
 
     const setRouteActive = (path: string) => {
-        if (path == '/profile' && !ProfileService.isLoggedIn()) {
+        if (path == '/profile' && !isAuth) {
             navigate('/login')
             return
         }
