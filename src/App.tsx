@@ -80,10 +80,8 @@ function App() {
             </Routes>
           </Layout>
 
-          <section className="footer fixed left-0 right-0 bottom-0 mx-auto max-w-lg z-30 bg-white">
-            <div className="bottom-navigation">
-              <BottomNavigation />
-            </div>
+          <section className="footer fixed left-0 right-0 bottom-0 mx-auto max-w-lg z-30 bg-white shadow-lg-top">
+            <BottomNavigation />
           </section>
         </div>
       </Router>

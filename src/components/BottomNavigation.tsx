@@ -40,7 +40,7 @@ export const BottomNavigation = () => {
     }
 
     return (
-        <div className='flex flex-row items-center justify-around p-1 bg-white'>
+        <div className='flex flex-row items-center justify-around p-1'>
             {tabs.map((tab, index) => {
                 return <div key={index} className='flex flex-col items-center cursor-pointer' onClick={() => setRouteActive(tab.path)}>
                     {pathname === tab.path ? <tab.activeIcon size={24} className='mb-1 text-green-600' /> : <tab.icon size={24} className='mb-1 text-gray-400' />}
