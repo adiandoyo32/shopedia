@@ -3,20 +3,20 @@ import { IoInformation, IoLogOutOutline } from "react-icons/io5";
 import MenuItem from "./components/MenuItem";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector, useAuth } from "../../redux/hooks";
 import { loadProfile, logout, selectProfile } from "../../redux/slice/profile.slice";
 import ModalDialog, { useModalDialog } from "../../components/ModalDialog";
 import TextButton from "../../components/TextButton";
 import ButtonBlock from "../../components/ButtonBlock";
-import ProfileService from "../../services/profile-service";
 
 function ProfilePage() {
   const dispatch = useAppDispatch()
   const profileState = useAppSelector(selectProfile)
+  const isAuth = useAuth()
   const { visible, toggle } = useModalDialog()
 
   useEffect(() => {
-    if (ProfileService.isLoggedIn()) {
+    if (isAuth) {
       dispatch(loadProfile())
     }
   }, [])
