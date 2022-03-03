@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import ButtonBlock from "../../components/ButtonBlock";
 import List from "../../components/List"
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchCartList, selectCart } from "../../redux/slice/cart-slice";
@@ -30,6 +31,12 @@ function CartPage() {
                             className={index != cartState.cartList.length - 1 ? 'border-b' : ''}
                         />}
                     />
+                    <div className="p-4">
+                    <ButtonBlock>
+                        Checkout
+                    </ButtonBlock>
+
+                    </div>
                 </div>
                 :
                 <div className="m-auto">

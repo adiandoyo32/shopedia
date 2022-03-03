@@ -1,14 +1,16 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { IoCart, IoCartOutline, IoHome, IoHomeOutline, IoPerson, IoPersonOutline } from 'react-icons/io5';
 import classNames from 'classnames';
-import ProfileService from '../services/auth-service';
-import { useAuth } from '../redux/hooks';
+import { useAppSelector, useAuth } from '../redux/hooks';
+import { selectCart } from '../redux/slice/cart-slice';
 
 export const BottomNavigation = () => {
+    const cartState =  useAppSelector(selectCart)
     const navigate = useNavigate();
     const location = useLocation()
     const isAuth = useAuth()
     const { pathname } = location
+    console.log(pathname)
 
     const tabs = [
         {
@@ -40,15 +42,21 @@ export const BottomNavigation = () => {
     }
 
     return (
-        <div className='flex flex-row items-center justify-around p-1'>
+        <div className='flex flex-row items-center justify-around p-2'>
             {tabs.map((tab, index) => {
-                return <div key={index} className='flex flex-col items-center cursor-pointer' onClick={() => setRouteActive(tab.path)}>
-                    {pathname === tab.path ? <tab.activeIcon size={24} className='mb-1 text-green-600' /> : <tab.icon size={24} className='mb-1 text-gray-400' />}
-                    <span className={classNames('text-gray-400 text-xs tracking-wide', { 'text-green-600': pathname == tab.path, 'font-bold': pathname === tab.path })}>
-                        {tab.title}
-                    </span>
+                return <div key={index} className='cursor-pointer' onClick={() => setRouteActive(tab.path)}>
+                    <div className='flex flex-col items-center relative'>
+                        {pathname === tab.path ?
+                            <tab.activeIcon size={20} className='mb-1 text-green-600' />
+                            :
+                            <tab.icon size={20} className='mb-1 text-gray-400' />}
+                        {tab.path === '/cart' && <span className='absolute -top-1 -right-3 border-2 border-white bg-red-600 rounded-full w-5 h-5 text-xs text-white text-center justify-center'>{cartState.cartList.length}</span>}
+                        <span className={classNames('text-gray-400 text-xs tracking-wide', { 'text-green-600': pathname == tab.path, 'font-bold': pathname === tab.path })}>
+                            {tab.title}
+                        </span>
+                    </div>
                 </div>
             })}
-        </div>
+        </div >
     )
 }
