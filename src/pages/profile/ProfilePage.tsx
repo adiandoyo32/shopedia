@@ -4,7 +4,7 @@ import MenuItem from "./components/MenuItem";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector, useAuth } from "../../redux/hooks";
-import { loadProfile, logout, selectProfile } from "../../redux/slice/profile.slice";
+import { loadProfile, logout, selectProfile } from "../../redux/slice/profile-slice";
 import ModalDialog, { useModalDialog } from "../../components/ModalDialog";
 import TextButton from "../../components/TextButton";
 import ButtonBlock from "../../components/ButtonBlock";

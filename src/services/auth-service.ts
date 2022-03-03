@@ -1,3 +1,5 @@
+import LoginRequest from "../models/request/LoginRequest";
+
 const isLoggedIn = (): boolean => {
     const profileJson = localStorage.getItem("profile");
     if (profileJson) {
@@ -5,8 +7,14 @@ const isLoggedIn = (): boolean => {
     } else return false;
 };
 
+const login = ({email, password} : LoginRequest) => {
+    if (email != 'user@email.com' && password != '123456') {
+    }
+}
+
 const AuthService = {
-    isLoggedIn
+    isLoggedIn,
+    login
 };
 
 export default AuthService;

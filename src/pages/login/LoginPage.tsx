@@ -2,6 +2,9 @@ import { useFormik } from "formik"
 import ButtonBlock from "../../components/ButtonBlock"
 import * as Yup from 'yup';
 import InputField from "../../components/InputField";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../redux/hooks";
+import { setProfile } from "../../redux/slice/profile-slice";
 
 interface LoginFormField {
   email: string;
@@ -9,6 +12,9 @@ interface LoginFormField {
 }
 
 const LoginPage = () => {
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+
   const schema = Yup.object().shape({
     email: Yup.string()
       .email("Invalid email format")
@@ -25,9 +31,13 @@ const LoginPage = () => {
   const formik = useFormik({
     initialValues,
     validationSchema: schema,
-    onSubmit: values => {
-      // dispatch(saveProfile(values))
-      // navigate('/profile')
+    onSubmit: (values, _) => {
+      const { email, password } = values
+      if (email != 'john@email.com' || password != '123456') {
+        return
+      }
+      dispatch(setProfile())
+      navigate('/')
     },
   });
 

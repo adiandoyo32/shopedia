@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import ButtonBlock from "../../components/ButtonBlock";
 import TextAreaField from "../../components/TextAreaField";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { saveProfile, selectProfile } from "../../redux/slice/profile.slice";
+import { saveProfile, selectProfile } from "../../redux/slice/profile-slice";
 import { useNavigate } from "react-router-dom";
 
 const EditProfilePage = () => {
