@@ -63,9 +63,9 @@ function PublicRoute(props: PublicRouteProps) {
 
 function App() {
   return (
-    <div className="App h-100 bg-neutral-200">
+    <div className="App bg-neutral-200">
       <Router>
-        <div className="page relative min-h-screen max-w-lg mx-auto flex flex-col bg-white">
+        <div className="page min-h-screen flex flex-col h-full max-w-lg m-auto bg-white">
           <Layout>
             <Routes>
               <Route path="/" element={<HomePage />}></Route>

@@ -4,9 +4,9 @@ const Layout: React.FC = ({ children }) => {
     return (
         <>
             <Navbar />
-            <section className="grow flex flex-col content bg-white mb-20">
+            {/* <section className="gorh-full bg-white mb-20"> */}
                 {children}
-            </section>
+            {/* </section> */}
         </>
     )
 }

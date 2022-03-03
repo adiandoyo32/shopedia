@@ -32,9 +32,8 @@ const LoginPage = () => {
   });
 
   return (
-    <div className="m-auto w-full p-4">
+    <div className="h-full w-full p-4">
       <form onSubmit={formik.handleSubmit}>
-
         <InputField label="Email" value={formik.values.email} onChange={formik.handleChange} valid={formik.errors.email && formik.touched.email ? false : true}>
           {formik.errors.email && formik.touched.email && (<p className="text-red-600">{formik.errors.email}</p>)}
         </InputField>
@@ -43,7 +42,7 @@ const LoginPage = () => {
         </InputField>
 
         <ButtonBlock type="submit">
-          Save
+          Login
         </ButtonBlock>
       </form>
     </div>
