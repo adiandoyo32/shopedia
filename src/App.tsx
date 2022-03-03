@@ -6,10 +6,12 @@ import ProfilePage from "./pages/profile/ProfilePage";
 import NotFoundPage from "./pages/error/NotFoundPage";
 import HomePage from "./pages/home/HomePage";
 import { BottomNavigation } from "./components/BottomNavigation";
-import { IoLocationSharp } from "react-icons/io5";
 import CartPage from "./pages/cart/CartPage";
 import EditProfilePage from "./pages/profile/EditProfilePage";
 import LoginPage from "./pages/login/LoginPage";
+import Layout from "./components/Layout";
+import ProtectedRoute from "./components/ProtectedRoute";
+import AuthRoute from "./components/AuthRoute";
 
 interface RouteItem {
   path: string;
@@ -29,7 +31,6 @@ const routes: Array<RouteItem> = [
   {
     path: "/profile",
     component: <ProfilePage />,
-    isAuth: true,
   },
   {
     path: "/login",
@@ -38,7 +39,6 @@ const routes: Array<RouteItem> = [
   {
     path: "*",
     component: <NotFoundPage />,
-    isAuth: true,
   },
 ];
 
@@ -65,37 +65,26 @@ function App() {
   return (
     <div className="App h-100 bg-neutral-200">
       <Router>
-        <div className="page relative min-h-screen min-w-2xl max-w-2xl mx-auto flex flex-col bg-white">
-            <section className="navbar sticky top-0 z-30 bg-white px-4 py-2 flex flex-row items-center justify-between">
-              <div className="logo font-bold text-xl">
-                <span className="tracking-wider">Shopedia</span>
-              </div>
-              <div className="flex items-center cursor-pointer">
-                <IoLocationSharp size={24} className="text-red-500" />
-                <div className="ml-2 px-1 w-32 ">
-                  <p className="text-xs text-gray-400 truncate">Location</p>
-                  <p className="text-sm font-bold truncate">
-                    Pontianak Kota
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            <section className="grow flex flex-col content py-2 bg-white mb-20">
-              <Routes>
-                <Route path="/" element={<HomePage />}></Route>
-                <Route path="cart" element={<CartPage />}></Route>
+        <div className="page relative min-h-screen max-w-lg mx-auto flex flex-col bg-white">
+          <Layout>
+            <Routes>
+              <Route path="/" element={<HomePage />}></Route>
+              <Route path="cart" element={<CartPage />}></Route>
+              <Route path="/" element={<ProtectedRoute />}>
                 <Route path="profile" element={<ProfilePage />} />
                 <Route path="profile/edit" element={<EditProfilePage />} />
+              </Route>
+              <Route path="/" element={<AuthRoute />}>
                 <Route path="login" element={<LoginPage />} />
-              </Routes>
-            </section>
+              </Route>
+            </Routes>
+          </Layout>
 
-            <section className="footer fixed left-0 right-0 bottom-0 mx-auto max-w-2xl z-30 bg-white">
-              <div className="bottom-navigation">
-                <BottomNavigation />
-              </div>
-            </section>
+          <section className="footer fixed left-0 right-0 bottom-0 mx-auto max-w-lg z-30 bg-white">
+            <div className="bottom-navigation">
+              <BottomNavigation />
+            </div>
+          </section>
         </div>
       </Router>
     </div>
