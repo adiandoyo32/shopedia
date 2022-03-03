@@ -5,8 +5,8 @@ const isLoggedIn = (): boolean => {
     } else return false;
 };
 
-const ProfileService = {
+const AuthService = {
     isLoggedIn
 };
 
-export default ProfileService;
+export default AuthService;
