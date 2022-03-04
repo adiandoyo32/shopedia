@@ -1,17 +1,17 @@
 import "./App.css";
-import "./assets/css/main.css"
+import "./assets/css/main.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AboutPage from "./pages/AboutPage";
 import ProfilePage from "./pages/profile/ProfilePage";
 import NotFoundPage from "./pages/error/NotFoundPage";
 import HomePage from "./pages/home/HomePage";
-import { BottomNavigation } from "./components/BottomNavigation";
 import CartPage from "./pages/cart/CartPage";
 import EditProfilePage from "./pages/profile/EditProfilePage";
 import LoginPage from "./pages/login/LoginPage";
-import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AuthRoute from "./components/AuthRoute";
+import LayoutFull from "./components/LayoutFull";
+import LayoutNavbar from "./components/LayoutNavbar";
 
 interface RouteItem {
   path: string;
@@ -65,24 +65,24 @@ function App() {
   return (
     <div className="App bg-neutral-300">
       <Router>
-        <div className="page min-h-screen flex flex-col h-full max-w-lg m-auto bg-white">
-          <Layout>
-            <Routes>
-              <Route path="/" element={<HomePage />}></Route>
-              <Route path="cart" element={<CartPage />}></Route>
-              <Route path="/" element={<ProtectedRoute />}>
+        <div className="page min-h-screen flex flex-col h-full max-w-lg m-auto bg-white pb-24">
+          <Routes>
+            <Route element={<LayoutFull />}>
+              <Route path="/" element={<HomePage />} />
+
+              <Route element={<ProtectedRoute />}>
                 <Route path="profile" element={<ProfilePage />} />
                 <Route path="profile/edit" element={<EditProfilePage />} />
               </Route>
-              <Route path="/" element={<AuthRoute />}>
+            </Route>
+            <Route element={<LayoutNavbar />}>
+              <Route path="cart" element={<CartPage />} />
+              <Route element={<AuthRoute />}>
                 <Route path="login" element={<LoginPage />} />
               </Route>
-            </Routes>
-          </Layout>
-
-          <section className="footer fixed left-0 right-0 bottom-0 mx-auto max-w-lg z-30 bg-white shadow-lg-top">
-            <BottomNavigation />
-          </section>
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
+          </Routes>
         </div>
       </Router>
     </div>
