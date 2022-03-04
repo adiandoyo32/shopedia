@@ -5,9 +5,9 @@ interface ProductCategoryItemProps {
 
 const ProductCategoryItem = (props: ProductCategoryItemProps) => {
   return (
-    <div className="inline-block mx-3 text-center">
+    <div className="mx-3 text-center cursor-pointer">
       {props.children}
-      <p className="text-xs text-gray-500 mt-2 ">{props.name}</p>
+      <p className="text-[10px] text-gray-500 mt-2">{props.name}</p>
     </div>
   );
 };

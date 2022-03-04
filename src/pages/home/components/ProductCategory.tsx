@@ -89,7 +89,7 @@ const ProductCategory = () => {
       <div ref={productCategoryScroll} onScroll={scrollCheck} className="overflow-x-auto max-w-xl no-scrollbar my-4 scroll-smooth">
         <div className="inline-flex">
           <ProductCategoryItem name="All Categories">
-            <AllProduct className="w-16 h-14 p-1" />
+            <AllProduct className="w-12 h-12 p-1 rounded-full" />
           </ProductCategoryItem>
           {productCategoryList.map((category, index) => {
             return (
@@ -97,7 +97,7 @@ const ProductCategory = () => {
                 <img
                   key={index}
                   src={category.image}
-                  className="max-w-sm h-14 p-1 rounded-full"
+                  className="max-w-sm h-12 p-1 rounded-full"
                 />
               </ProductCategoryItem>
             );
@@ -105,13 +105,13 @@ const ProductCategory = () => {
         </div>
 
         {isReachedLeft && <div className="absolute left-4 top-10">
-          <div className="flex w-10 h-10 bg-white rounded-full items-center justify-center drop-shadow-xl cursor-pointer" onClick={scrollToLeft}>
-            <IoChevronBack size={20} />
+          <div className="flex w-8 h-8 bg-white rounded-full items-center justify-center drop-shadow-xl cursor-pointer" onClick={scrollToLeft}>
+            <IoChevronBack size={16} />
           </div>
         </div>}
         {!isReachedRight && <div className="absolute right-4 top-10 transition ease-in-out duration-1000">
-          <div className="flex w-10 h-10 bg-white rounded-full items-center justify-center drop-shadow-xl cursor-pointer" onClick={scrollToRight}>
-            <IoChevronForward size={20} />
+          <div className="flex w-8 h-8 bg-white rounded-full items-center justify-center drop-shadow-xl cursor-pointer" onClick={scrollToRight}>
+            <IoChevronForward size={16} />
           </div>
         </div>}
       </div>
