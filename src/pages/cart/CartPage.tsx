@@ -36,8 +36,10 @@ function CartPage() {
               />
             )}
           />
-          <div className="p-4">
-            <ButtonBlock>Checkout</ButtonBlock>
+          <div className="fixed mx-auto left-0 bottom-0 right-0 max-w-lg p-4 bg-white shadow-lg-top z-30">
+            <div>
+              <ButtonBlock>Checkout</ButtonBlock>
+            </div>
           </div>
         </div>
       ) : (
