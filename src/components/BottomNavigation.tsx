@@ -10,7 +10,6 @@ export const BottomNavigation = () => {
     const location = useLocation()
     const isAuth = useAuth()
     const { pathname } = location
-    console.log(pathname)
 
     const tabs = [
         {
@@ -50,7 +49,7 @@ export const BottomNavigation = () => {
                             <tab.activeIcon size={20} className='mb-1 text-green-600' />
                             :
                             <tab.icon size={20} className='mb-1 text-gray-400' />}
-                        {tab.path === '/cart' && <span className='absolute -top-1 -right-3 border-2 border-white bg-red-600 rounded-full w-5 h-5 text-xs text-white text-center justify-center'>{cartState.cartList.length}</span>}
+                        {tab.path === '/cart' && cartState.cartList.length > 0 && <span className='absolute -top-1 -right-3 border-2 border-white bg-red-600 rounded-full w-5 h-5 text-[10px] text-white text-center justify-center'>{cartState.cartList.length}</span>}
                         <span className={classNames('text-gray-400 text-xs tracking-wide', { 'text-green-600': pathname == tab.path, 'font-bold': pathname === tab.path })}>
                             {tab.title}
                         </span>
