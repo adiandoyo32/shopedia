@@ -69,8 +69,9 @@ const BottomNavigation = () => {
                   </span>
                 )}
                 <span
-                  className={classNames("text-gray-400 text-xs tracking-wide", {
-                    "text-green-600": pathname == tab.path,
+                  className={classNames("text-xs tracking-wide", {
+                    "text-green-600": pathname === tab.path,
+                    "text-gray-400": pathname !== tab.path,
                     "font-bold": pathname === tab.path,
                   })}
                 >
