@@ -63,7 +63,7 @@ function PublicRoute(props: PublicRouteProps) {
 
 function App() {
   return (
-    <div className="App bg-neutral-200">
+    <div className="App bg-neutral-300">
       <Router>
         <div className="page min-h-screen flex flex-col h-full max-w-lg m-auto bg-white">
           <Layout>
