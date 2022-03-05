@@ -6,15 +6,21 @@ import { RootState } from "../store";
 export interface CartState {
   cartList: CartItem[];
   cartListStatus: "idle" | "loading" | "failed";
+  paymentAmount: number;
 }
 
 const initialState: CartState = {
   cartList: [],
   cartListStatus: "idle",
+  paymentAmount: 0,
 };
 
 const findCartItemIndex = (cartList: CartItem[], id: number): number => {
   return cartList.findIndex((cartItem) => cartItem.id == id);
+};
+
+const paymentAmount = (cartList: CartItem[]) => {
+  return cartList.reduce((acc, item) => acc + (item.qty * item.price), 0);
 };
 
 export const fetchCartList = createAsyncThunk(
@@ -45,6 +51,7 @@ export const cartSlice = createSlice({
       } else {
         state.cartList = [...state.cartList, payload];
       }
+      state.paymentAmount = paymentAmount(state.cartList);
     },
     decrementQty: (state, { payload }: PayloadAction<CartItem>) => {
       const index = findCartItemIndex(state.cartList, payload.id);
@@ -53,17 +60,23 @@ export const cartSlice = createSlice({
       } else {
         state.cartList.splice(index, 1);
       }
+      state.paymentAmount = paymentAmount(state.cartList);
     },
     incrementQty: (state, { payload }: PayloadAction<CartItem>) => {
       const index = findCartItemIndex(state.cartList, payload.id);
       if (state.cartList[index].qty < 99) {
         state.cartList[index].qty += 1;
       }
+      state.paymentAmount = paymentAmount(state.cartList);
     },
     removeFromCart: (state, { payload }: PayloadAction<number>) => {
       const index = findCartItemIndex(state.cartList, payload);
       state.cartList.splice(index, 1);
+      state.paymentAmount = paymentAmount(state.cartList);
     },
+    calculatePaymentAmount: (state) => {
+      state.paymentAmount = paymentAmount(state.cartList);
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCartList.pending, (state) => {
@@ -74,6 +87,7 @@ export const cartSlice = createSlice({
       (state, action: PayloadAction<CartItem[]>) => {
         state.cartListStatus = "idle";
         state.cartList = action.payload;
+        state.paymentAmount = paymentAmount(state.cartList)
       }
     );
     builder.addCase(fetchCartList.rejected, (state) => {
@@ -88,6 +102,7 @@ export const {
   decrementQty,
   incrementQty,
   removeFromCart,
+  calculatePaymentAmount,
 } = cartSlice.actions;
 export const selectCart = (state: RootState) => state.cart;
 

@@ -22,6 +22,8 @@ const ButtonIconOutline: React.FC<ButtonIconOutlineProps> = (props) => {
     switch (color) {
       case "green":
         return "border-green-600"
+      case "red":
+        return "border-red-600"
       default:
         return "border-gray-300"
     }
@@ -31,6 +33,8 @@ const ButtonIconOutline: React.FC<ButtonIconOutlineProps> = (props) => {
     switch (color) {
       case "green":
         return "focus:ring-green-600/20"
+      case "red":
+        return "focus:ring-red-600/20"
       default:
         return "focus:ring-gray-300/20"
     }

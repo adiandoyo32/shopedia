@@ -51,7 +51,7 @@ const apiRoutes = [
                 image: "/images/200.png",
                 desc: "Lorem ipsum dolor sit amet",
                 title: "Product 1",
-                price: "Rp.100.000",
+                price: "100000",
                 qty: 2
             },
             {
@@ -59,7 +59,7 @@ const apiRoutes = [
                 image: "/images/200.png",
                 desc: "Lorem ipsum dolor sit amet",
                 title: "Product 2",
-                price: "Rp.100.000",
+                price: "100000",
                 qty: 98
             },
         ],

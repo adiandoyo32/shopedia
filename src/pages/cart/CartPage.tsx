@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchCartList, selectCart } from "../../redux/slice/cart-slice";
 import CartListTile from "./components/CartListTile";
 import { ReactComponent as EmptyCart } from "./../../assets/icons/empty-cart.svg";
+import { currency } from "../../libs/utils";
 
 function CartPage() {
   const cartState = useAppSelector(selectCart);
@@ -23,7 +24,7 @@ function CartPage() {
   return (
     <>
       {cartState.cartList.length > 0 ? (
-        <div className="flex flex-col">
+        <div className="flex flex-col mb-10">
           <List
             data={cartState.cartList}
             renderItem={(cartItem, index) => (
@@ -31,14 +32,22 @@ function CartPage() {
                 key={index}
                 product={cartItem}
                 className={
-                  index != cartState.cartList.length - 1 ? "border-b" : ""
+                  index != cartState.cartList.length - 1 ? "" : ""
                 }
               />
             )}
           />
           <div className="fixed mx-auto left-0 bottom-0 right-0 max-w-lg p-4 bg-white shadow-lg-top z-30">
             <div>
-              <ButtonBlock>Checkout</ButtonBlock>
+              <div className="flex justify-between mb-3">
+                <p className="font-bold text-base">Total Payment</p>
+                <p className="font-bold text-base">
+                  {currency(cartState.paymentAmount)}
+                </p>
+              </div>
+              <ButtonBlock>
+                <span className="font-bold text-base">Checkout</span>
+              </ButtonBlock>
             </div>
           </div>
         </div>
