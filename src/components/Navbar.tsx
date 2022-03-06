@@ -1,8 +1,26 @@
+import { useEffect, useRef, useState } from "react";
 import { IoLocationSharp } from "react-icons/io5";
 
 const Navbar: React.FC = ({ children }) => {
+  const [scroll, setScroll] = useState(false);
+
+  useEffect(() => {
+    window.onscroll = function() {
+      if (window.scrollY > 50) {
+        setScroll(true);
+      } else {
+        setScroll(false);
+      }
+    };
+    return cleanUp
+  }, [scroll])
+
+  const cleanUp = () => {
+    window.onscroll = null
+  }
+
   return (
-    <header className="sticky top-0 z-30 bg-white px-4 py-2 flex flex-row items-center justify-between">
+    <header className={`sticky top-0 z-30 bg-white px-4 py-2 flex flex-row items-center justify-between ${scroll ? 'shadow-md' : ''}`}>
       {children ?? (
         <>
           <div className="logo font-bold text-xl">

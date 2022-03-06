@@ -6,12 +6,18 @@ import { fetchCartList, selectCart } from "../../redux/slice/cart-slice";
 import CartListTile from "./components/CartListTile";
 import { ReactComponent as EmptyCart } from "./../../assets/icons/empty-cart.svg";
 import { currency } from "../../libs/utils";
+import { PageState, setPageState } from "../../redux/slice/page-slice";
+
+const pageState : PageState = {
+  title: 'Cart',
+}
 
 function CartPage() {
   const cartState = useAppSelector(selectCart);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    dispatch(setPageState(pageState))
     if (cartState.cartList.length == 0) {
       loadCart();
     }
