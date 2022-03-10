@@ -48,7 +48,7 @@ const BottomNavigation = () => {
   };
 
   return (
-    <section className="footer fixed left-0 right-0 bottom-0 mx-auto max-w-lg z-30 bg-white shadow-lg-top">
+    <section className="footer fixed left-0 right-0 bottom-0 mx-auto max-w-lg z-30 bg-white shadow-lg-top overflow-hidden">
       <div className="flex flex-row items-center justify-around p-2">
         {tabs.map((tab, index) => {
           return (

@@ -12,10 +12,11 @@ import {
 import ModalDialog, { useModalDialog } from "../../components/ModalDialog";
 import TextButton from "../../components/TextButton";
 import ButtonBlock from "../../components/ButtonBlock";
+import { Dialog } from "antd-mobile";
 
 function ProfilePage() {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const profileState = useAppSelector(selectProfile);
   const isAuth = useAuth();
   const { visible, toggle } = useModalDialog();
@@ -41,6 +42,20 @@ function ProfilePage() {
         <MenuItem icon={<IoInformation size={16} />} name="About" />
         <MenuItem
           onClick={toggle}
+          // onClick={() => {
+          //   Dialog.confirm({
+          //     title: 'Logout Confirmation',
+          //     content: (
+          //       <div className="text-center py-8">
+          //         <p className="font-medium text-sm">
+          //           Are you sure you want to logout?
+          //         </p>
+          //       </div>
+          //     ),
+          //     className: 'p-3',
+          //     closeOnMaskClick: true,
+          //   });
+          // }}
           icon={<IoLogOutOutline size={16} />}
           name="Logout"
         />
@@ -57,7 +72,7 @@ function ProfilePage() {
             onClick={() => {
               dispatch(logout());
               toggle();
-              navigate('/')
+              navigate("/");
             }}
           >
             Logout
