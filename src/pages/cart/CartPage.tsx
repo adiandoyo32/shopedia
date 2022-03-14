@@ -7,6 +7,7 @@ import CartListTile from "./components/CartListTile";
 import { ReactComponent as EmptyCart } from "./../../assets/icons/empty-cart.svg";
 import { currency } from "../../libs/utils";
 import { PageState, setPageState } from "../../redux/slice/page-slice";
+import { useNavigate } from "react-router-dom";
 
 const pageState : PageState = {
   title: 'Cart',
@@ -15,6 +16,7 @@ const pageState : PageState = {
 function CartPage() {
   const cartState = useAppSelector(selectCart);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(setPageState(pageState))
@@ -51,7 +53,7 @@ function CartPage() {
                   {currency(cartState.paymentAmount)}
                 </p>
               </div>
-              <ButtonBlock>
+              <ButtonBlock onClick={() => navigate('/checkout')}>
                 <span className="font-bold text-base">Checkout</span>
               </ButtonBlock>
             </div>
