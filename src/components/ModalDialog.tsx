@@ -18,7 +18,7 @@ const ModalDialog: React.FC<ModalDialogProps> = (props) => {
         <div
           aria-modal
           role="dialog"
-          className=""
+          className="min-w-fit max-w-2xl"
         >
           <div
             role="document"
