@@ -3,13 +3,15 @@ import pageReducer from "./slice/page-slice"
 import productReducer from "./slice/product-slice"
 import cartReducer from "./slice/cart-slice"
 import profileReducer from "./slice/profile-slice"
+import orderReducer from "./slice/order-slice"
 
 export const store = configureStore({
   reducer: {
     page: pageReducer,
     product: productReducer,
     cart: cartReducer,
-    profile: profileReducer
+    profile: profileReducer,
+    order: orderReducer
   },
 });
 
