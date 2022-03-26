@@ -64,6 +64,24 @@ const apiRoutes = [
             },
         ],
     },
+
+    {
+        status: 200,
+        data: [
+            {
+                id: 1,
+                name: "Instant",
+                price: 30000,
+                description: "1 - 2 Days",
+            },
+            {
+                id: 2,
+                name: "Cargo",
+                price: 30000,
+                description: "3 - 5 Days",
+            },
+        ],
+    },
 ];
 
 const mock = new MockAdapter(axiosIns);
@@ -74,6 +92,10 @@ mock.onGet("/api/products").reply(() => {
 
 mock.onGet("/api/cart").reply(() => {
     return [200, apiRoutes[1]];
+});
+
+mock.onGet("/api/shipping-methods").reply(() => {
+    return [200, apiRoutes[2]];
 });
 
 export default apiRoutes;

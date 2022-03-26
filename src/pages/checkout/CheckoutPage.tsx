@@ -3,7 +3,7 @@ import { useAppDispatch } from "../../redux/hooks";
 import { PageState, setPageState } from "../../redux/slice/page-slice";
 import OrderList from "./components/OrderList";
 import ShippingAddress from "./components/ShippingAddress";
-import ShippingMethod from "./components/ShippingMethod";
+import ShippingMethodSection from "./components/ShippingMethodSection";
 
 const pageState: PageState = {
     title: "Checkout",
@@ -22,7 +22,21 @@ const CheckoutPage = () => {
         <div className="p-4">
             <ShippingAddress />
             <OrderList />
-            <ShippingMethod />
+            <ShippingMethodSection />
+            <div className="flex flex-col">
+                <div className="text-sm font-medium flex justify-between leading-7">
+                    <p>Total Price</p>
+                    <p>Rp 20.0000</p>
+                </div>
+                <div className="text-sm font-medium flex justify-between leading-7">
+                    <p>Delivery Fee</p>
+                    <p>Rp 20.0000</p>
+                </div>
+                <div className="text-sm font-medium flex justify-between leading-7">
+                    <p>Delivery Fee</p>
+                    <p>Rp 20.0000</p>
+                </div>
+            </div>
         </div>
     );
 };

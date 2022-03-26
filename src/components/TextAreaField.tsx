@@ -5,7 +5,8 @@ interface TextFieldProps {
   label?: string;
   required?: boolean;
   value?: string | number
-  onChange?: React.ChangeEventHandler<HTMLTextAreaElement>
+  // onChange?: React.ChangeEventHandler<HTMLTextAreaElement>
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
   valid?: boolean
 }
 

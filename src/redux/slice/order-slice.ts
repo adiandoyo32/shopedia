@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import Address from "../../models/Address";
 import Order from "../../models/Order";
+import ShippingMethod from "../../models/ShippingMethod";
 import { RootState } from "../store";
 
 export interface OrderState {
@@ -8,8 +10,8 @@ export interface OrderState {
 
 const initialState: OrderState = {
     order: {
-        shippingAddress: "",
-        shippingMethod: "",
+        shippingAddress: undefined,
+        shippingMethod: undefined
     },
 };
 
@@ -17,7 +19,13 @@ export const orderSlice = createSlice({
     name: "order",
     initialState,
     reducers: {
-        saveShippingMethod: (state, { payload }: PayloadAction<String>) => {
+        setAddress: (state, action: PayloadAction<string>) => {
+            const address: Address = {
+                street: action.payload,
+            }
+            state.order.shippingAddress = address
+        },
+        saveShippingMethod: (state, { payload }: PayloadAction<ShippingMethod>) => {
             state.order.shippingMethod = payload;
         },
         // loadProfile: (state) => {
@@ -33,7 +41,7 @@ export const orderSlice = createSlice({
     },
 });
 
-export const { saveShippingMethod } = orderSlice.actions;
+export const { saveShippingMethod, setAddress } = orderSlice.actions;
 export const selectOrder = (state: RootState) => state.order;
 
 export default orderSlice.reducer;

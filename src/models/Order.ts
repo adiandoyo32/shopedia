@@ -1,4 +1,7 @@
+import Address from "./Address";
+import ShippingMethod from "./ShippingMethod";
+
 export default interface Order {
-    shippingAddress: String;
-    shippingMethod?: String;
+    shippingAddress?: Address;
+    shippingMethod?: ShippingMethod;
 }
