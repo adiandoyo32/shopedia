@@ -1,5 +1,5 @@
 import { currency } from "../../../libs/utils";
-import ShippingMethod from "../../../models/ShippingMethod";
+import ShippingMethod from "@models/ShippingMethod"
 
 interface ShippingMethodItemProps {
     shippingMethod: ShippingMethod;
