@@ -13,6 +13,7 @@ import AuthRoute from "./components/AuthRoute";
 import LayoutFull from "./components/LayoutFull";
 import LayoutNavbar from "./components/LayoutNavbar";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
+import PaymentPage from "./pages/payment/PaymentPage";
 
 interface RouteItem {
     path: string;
@@ -76,6 +77,7 @@ function App() {
                         </Route>
                         <Route element={<LayoutNavbar />}>
                             <Route path="cart" element={<CartPage />} />
+                            <Route path="payment" element={<PaymentPage />} />
                             <Route element={<AuthRoute />}>
                                 <Route path="login" element={<LoginPage />} />
                             </Route>

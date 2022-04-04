@@ -1,11 +1,12 @@
-import { Navigate, Outlet } from "react-router-dom"
-import { useAuth } from "../redux/hooks"
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useAuth } from "../redux/hooks";
 
 const ProtectedRoute = () => {
-    const isAuth = useAuth()
+  const isAuth = useAuth();
+  const location = useLocation();
 
-    if (isAuth) return <Outlet />
-    return <Navigate to="/login" />
-}
+  if (isAuth) return <Outlet />;
+  return <Navigate to="/login" state={{ from: location }} replace />;
+};
 
-export default ProtectedRoute
+export default ProtectedRoute;

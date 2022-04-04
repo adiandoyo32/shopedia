@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { IoLocationSharp } from "react-icons/io5";
 import { useAppSelector } from "../redux/hooks";
 import { selectProfile } from "../redux/slice/profile-slice";
+import { Logo } from "../assets/images";
 
 const Navbar: React.FC = ({ children }) => {
   const [scroll, setScroll] = useState(false);
@@ -30,7 +31,8 @@ const Navbar: React.FC = ({ children }) => {
     >
       {children ?? (
         <>
-          <div className="logo font-bold text-xl">
+          <div className="logo font-bold text-xl flex items-center space-x-2">
+            <img src={Logo} className="h-6" />
             <span className="tracking-wider">Shopedia</span>
           </div>
           <div className="flex items-center cursor-pointer">

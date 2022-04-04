@@ -77,7 +77,7 @@ const apiRoutes = [
             {
                 id: 2,
                 name: "Cargo",
-                price: 30000,
+                price: 60000,
                 description: "3 - 5 Days",
             },
         ],
