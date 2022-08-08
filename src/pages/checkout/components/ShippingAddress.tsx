@@ -29,7 +29,7 @@ const ShippingAddress: React.FC = () => {
                     value={profileState.profile.address}
                     onChange={setOrderAddress}
                 >
-                    {orderState.order.shippingAddress?.street}
+                    {/* {orderState.order.shippingAddress?.street} */}
                 </TextAreaField>
                 {/* <div className="flex p-4 shadow rounded-md justify-between cursor-pointer">
                     <p className="text-sm font-semibold">Choose shipping address</p>
