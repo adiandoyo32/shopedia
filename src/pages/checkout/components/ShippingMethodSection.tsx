@@ -1,23 +1,26 @@
 import { useEffect } from "react";
 import { ImTruck } from "react-icons/im";
 import { IoChevronForwardOutline } from "react-icons/io5";
+import { selectCart } from "src/redux/slice/cart-slice";
 import BottomSheet, { useBottomSheet } from "../../../components/BottomSheet";
 import TextButton from "../../../components/TextButton";
 import { currency } from "../../../libs/utils";
 import ShippingMethod from "../../../models/ShippingMethod";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
-import { saveShippingMethod, selectOrder } from "../../../redux/slice/order-slice";
+import { calculateTotalPayment, saveShippingMethod, selectOrder } from "../../../redux/slice/order-slice";
 import { fetchShippingMethodList, selectShippingMethod } from "../../../redux/slice/shipping-method-slice";
 import ShippingMethodItem from "./ShippingMethodItem";
 
 const ShippingMethodSection = () => {
     const { visible, toggle } = useBottomSheet();
     const orderState = useAppSelector(selectOrder);
+    const cartState = useAppSelector(selectCart);
     const shippingMethodState = useAppSelector(selectShippingMethod);
     const dispatch = useAppDispatch();
 
     const setShippingMethod = (value: ShippingMethod) => {
         dispatch(saveShippingMethod(value));
+        dispatch(calculateTotalPayment(cartState.paymentAmount) )
         toggle();
     };
 

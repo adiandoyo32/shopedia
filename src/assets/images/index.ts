@@ -10,6 +10,7 @@ import Watches from "./watches.png";
 import ComputerLaptop from "./computer-laptop.png";
 import Camera from "./camera.png";
 import Placeholder from "./200.png"
+import Logo from "./logo.png"
 
 export {
   Electronic,
@@ -23,5 +24,6 @@ export {
   Watches,
   ComputerLaptop,
   Camera,
-  Placeholder
+  Placeholder,
+  Logo
 };

@@ -11,7 +11,6 @@ const ShippingAddress: React.FC = () => {
     const dispatch = useAppDispatch();
 
     const setOrderAddress = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        console.log(e.target.value);
         dispatch(setAddress(e.target.value));
     }
 
@@ -26,8 +25,9 @@ const ShippingAddress: React.FC = () => {
             <div className="mb-6">
                 <TextAreaField
                     label="Address"
-                    value={profileState.profile.address}
+                    value={orderState.order.shippingAddress?.street}
                     onChange={setOrderAddress}
+                    valid={true}
                 >
                     {/* {orderState.order.shippingAddress?.street} */}
                 </TextAreaField>
