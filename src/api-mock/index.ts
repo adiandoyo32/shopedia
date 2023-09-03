@@ -51,7 +51,7 @@ const apiRoutes = [
               id: 7,
               image: "/images/200.png",
               desc: "Lorem ipsum dolor sit amet",
-              title: "Product ZZZ",
+              title: "Product ABC",
               price: 100000,
             }
         ],
