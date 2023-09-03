@@ -46,6 +46,13 @@ const apiRoutes = [
               desc: "Lorem ipsum dolor sit amet",
               title: "Product 5",
               price: 100000,
+            },
+            {
+              id: 7,
+              image: "/images/200.png",
+              desc: "Lorem ipsum dolor sit amet",
+              title: "Product ABC",
+              price: 100000,
             }
         ],
     },
