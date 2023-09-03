@@ -12,3 +12,7 @@ export const currency = (value: number): string => {
   const formatted = value.toString().replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, '.')
   return `${formatted}`;
 };
+
+export const abc = () => {
+  return '09123123'
+}
