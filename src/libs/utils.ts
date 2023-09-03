@@ -16,3 +16,7 @@ export const currency = (value: number): string => {
 export const toInt = (value: number): any => {
   return 'asdasd'
 }
+
+export const abc = () => {
+  return '09123123'
+}
